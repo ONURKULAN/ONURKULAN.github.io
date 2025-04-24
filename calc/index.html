@@ -1,11 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İYTE HAZIRLIK ORTALAMA HESAPLAMA</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&display=swap" rel="stylesheet" />
 </head>
+
 <body>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat quidem, temporibus laudantium tempora non est, dolor ipsa pariatur quaerat quas modi voluptate similique quia fuga. Vero obcaecati minima iste animi.
+  <h1>İYTE Hazırlık Ortalama Hesaplama</h1>
+  <h3>Notlarınızı girerek yıl sonu ortalamanızı hesaplayabilirsiniz</h3>
+  
+
+  <form id="gradeForm">
+    <h2>Fall Term </h2>
+
+    <div class="form-container">
+      <div class="form-row">
+        <label for="quiz1">Quiz 1</label>
+        <input type="number" id="quiz1" placeholder="0-40" step="0.1" min="0" max="40" required />
+      </div>
+
+      <div class="form-row">
+        <label for="quiz2">Quiz 2</label>
+        <input type="number" id="quiz2" placeholder="0-40" step="0.1" min="0" max="40" required />
+      </div>
+
+      <div class="form-row">
+        <label for="quiz3">Quiz 3</label>
+        <input type="number" id="quiz3" placeholder="0-40" step="0.1" min="0" max="40" required />
+      </div>
+
+      <div class="form-row">
+        <label for="CPG1">CPG 1</label>
+        <input type="number" id="CPG1" placeholder="0-20" step="0.1" min="0" max="20" required />
+      </div>
+    </div>
+
+    <h4>Term Exam 1</h4>
+
+    <div class="form-container">
+      <div class="form-row">
+        <label for="writing">Writing</label>
+        <input type="number" id="writing" placeholder="0-20" step="0.1" min="0" max="20" required />
+      </div>
+
+      <div class="form-row">
+        <label for="language">Language</label>
+        <input type="number" id="language" placeholder="0-20" step="0.1" min="0" max="20" required />
+      </div>
+
+      <div class="form-row">
+        <label for="listening">Listening</label>
+        <input type="number" id="listening" placeholder="0-10" step="0.1" min="0" max="10" required />
+      </div>
+
+      <div class="form-row">
+        <label for="reading">Reading</label>
+        <input type="number" id="reading" placeholder="0-20" step="0.1" min="0" max="20" required />
+      </div>
+
+      <div class="form-row">
+        <label for="speaking">Speaking</label>
+        <input type="number" id="speaking" placeholder="0-20" step="0.1" min="0" max="20" required />
+      </div>
+
+      <div class="form-row">
+        <label for="vocabulary">Vocabulary</label>
+        <input type="number" id="vocabulary" placeholder="0-10" step="0.1" min="0" max="10" required />
+      </div>
+    </div>
+
+    <h6>SPRING TERM</h6>
+
+    <div class="form-container">
+      <div class="form-row">
+        <label for="quiz4">Quiz 4</label>
+        <input type="number" id="quiz4" placeholder="0-20" step="0.1" min="0" max="20" required />
+      </div>
+
+      <div class="form-row">
+        <label for="quiz5">Quiz 5</label>
+        <input type="number" id="quiz5" placeholder="0-40" step="0.1" min="0" max="40" required />
+      </div>
+
+      <div class="form-row">
+        <label for="quiz6">Quiz 6</label>
+        <input type="number" id="quiz6" placeholder="0-20" step="0.1" min="0" max="20" required />
+      </div>
+
+      <div class="form-row">
+        <label for="CPG2">CPG 2</label>
+        <input type="number" id="CPG2" placeholder="0-20" step="0.1" min="0" max="20" required />
+      </div>
+    </div>
+
+    <h5>Term Exam 2</h5 >
+
+    <div class="form-container">
+      <div class="form-row">
+        <label for="writing2">Writing</label>
+        <input type="number" id="writing2" placeholder="0-20" step="0.1" min="0" max="20" required />
+      </div>
+
+      <div class="form-row">
+        <label for="language2">Language</label>
+        <input type="number" id="language2" placeholder="0-25" step="0.1" min="0" max="25" required />
+      </div>
+
+      <div class="form-row">
+        <label for="listening2">Listening</label>
+        <input type="number" id="listening2" placeholder="0-20" step="0.1" min="0" max="20" required />
+      </div>
+
+      <div class="form-row">
+        <label for="reading2">Reading</label>
+        <input type="number" id="reading2" placeholder="0-20" step="0.1" min="0" max="20" required />
+      </div>
+
+      <div class="form-row">
+        <label for="vocabulary2">Vocabulary</label>
+        <input type="number" id="vocabulary2" placeholder="0-15" step="0.1" min="0" max="15" required />
+      </div>
+    </div>
+    <h6>FINAL EXAM</h6>
+    <div class="form-row">
+      <label for="FINAL">Final Exam</label>
+      <input type="number" id="FINAL" placeholder="0-100" step="0.1" min="0" max="100" required />
+    </div>
+    <button type="button" id="calculateBtn" class="calculate-btn">Ortalamayı Hesapla</button>
+
+    <div class="result-container" id="resultContainer">
+      <div class="result-title">Dönem Ortalamanız:</div>
+      <div class="result-value" id="resultValue">0.00</div>
+    </div>
+    <footer 
+        style="margin-top: 60px; text-align: center; color: #718096; font-size: 20px;">
+        <p>✨ This is just the beginning...</p>
+        <p><em>Next project loading</em> ⏳</p>
+        <p>""This site was created by Onur Kulan and Burak to support İYTE preparatory students. 💻🎓"</p>
+    </footer>
+      
+  </form>
+
+  <script>
+    document.getElementById("calculateBtn").onclick= deneme;
+    function deneme() {
+      let hesap = true;
+      const liste = [ "quiz1", "quiz2", "quiz3", "quiz4", "quiz5", "quiz6","CPG1", "CPG2", "writing", "language", "listening",  "reading", "speaking", "vocabulary", "writing2","language2", "listening2", "reading2", "vocabulary2", "FINAL"  ];
+      liste.forEach(id => {
+      let input = document.getElementById(id);
+      let değer = parseFloat(input.value);
+      let min = 0;
+      let max = parseFloat(input.max);
+
+      if (isNaN(değer) || değer < min || değer > max) {
+        input.style.border = "2px solid red";
+        hesap = false;
+      } else {
+        input.style.border = ""; // Hata yoksa kenarlığı temizle
+       }
+       });
+    if (!hesap) {
+
+      alert("Bazı notlar geçersiz. Lütfen belirtilen maksimum değerler arasında bir değer girin.");
+     } else {
+      function toplamahesabi(){
+        const q1 = Number(document.getElementById("quiz1").value);
+        const q2 = Number(document.getElementById("quiz2").value);
+        const q3 = Number(document.getElementById("quiz3").value);
+        const q4 = Number(document.getElementById("quiz4").value);
+        const q5 = Number(document.getElementById("quiz5").value);
+        const q6 = Number(document.getElementById("quiz6").value);
+        const cpg1 = Number(document.getElementById("CPG1").value);
+        const cpg2 = Number(document.getElementById("CPG2").value);
+        const writing1 = Number(document.getElementById("writing1").value);
+        const language1 = Number(document.getElementById("language1").value);
+        const listening1 = Number(document.getElementById("listening1").value);
+        const reading1 = Number(document.getElementById("reading1").value);
+        const speaking1 = Number(document.getElementById("speaking1").value);
+        const vocabulary1 = Number(document.getElementById("vocabulary1").value);
+        const writing2 = Number(document.getElementById("writing2").value);
+        const language2 = Number(document.getElementById("language2").value);
+        const listening2 = Number(document.getElementById("listening2").value);
+        const reading2 = Number(document.getElementById("reading2").value);
+        const vocabulary2 = Number(document.getElementById("vocabulary2").value);
+        let finalexam = Number(document.getElementById("finalexam").value);
+
+      
+
+     }}
+}
+  </script>
 </body>
 </html>
