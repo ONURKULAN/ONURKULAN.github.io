@@ -88,7 +88,8 @@ h3  {
 
 /* Form kutuları */
 .form-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 15px;
@@ -100,7 +101,7 @@ h3  {
   font-size: 19.5px;
   justify-content: space-between;
   align-items: center;
-  width: 41%;
+  width: 80%;
   margin: 8px 0;
   padding: 12px 16px;
   background-color: #ffffff;
@@ -230,9 +231,9 @@ input[type="text"]:focus {
   .form-row {
     width: 50%; /* Her satır tam genişlik kaplasın */
     padding: 10px 12px; /* İç boşlukları ayarla */
-    font-size: 17px; /* Yazı boyutunu ayarla */
+    font-size: 10px; /* Yazı boyutunu ayarla */
     flex-direction: column; /* Label ve input'u alt alta getir */
-    align-items: flex-start; /* Öğeleri sola hizala */
+    align-items: flex-start;/* Öğeleri sola hizala */
     gap: 5px; /* Label ve input arası boşluk */
   }
 
