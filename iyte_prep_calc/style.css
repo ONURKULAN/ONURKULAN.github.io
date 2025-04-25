@@ -176,7 +176,7 @@ input[type="text"]:focus {
 
 /* Sonuç bölümü */
 .result-container {
-  font-size: 35px;
+  font-size: 30px;
   margin-top: 30px;
   padding: 20px;
   background-color: #ebf8ff;
@@ -186,7 +186,7 @@ input[type="text"]:focus {
 }
 
 .result-title {
-  font-size: 35px;
+  font-size: 30px;
   font-weight: 700;
   margin-bottom: 10px;
 }
@@ -195,5 +195,139 @@ input[type="text"]:focus {
   font-size: 40px;
   font-weight: 700;
   color: #2b6cb0;
+
+}
+
+/* Mobil Cihazlar İçin Stiller (768px ve altı) */
+@media (max-width: 768px) {
+  body {
+    padding: 15px; /* Kenar boşluklarını azalt */
+    max-width: 100%; /* Maksimum genişliği kaldır veya %100 yap */
+  }
+
+  h1 {
+    font-size: 28px; /* Başlık boyutunu küçült */
+  }
+
+  h2, h6 {
+    font-size: 24px;
+  }
+
+  h4, h5 {
+     font-size: 22px;
+  }
+
+  h3 {
+      font-size: 20px;
+  }
+
+
+  .form-container {
+    flex-direction: column; /* Öğeleri alt alta sırala */
+    gap: 10px; /* Öğeler arası boşluğu azalt */
+  }
+
+  .form-row {
+    width: 50%; /* Her satır tam genişlik kaplasın */
+    padding: 10px 12px; /* İç boşlukları ayarla */
+    font-size: 17px; /* Yazı boyutunu ayarla */
+    flex-direction: column; /* Label ve input'u alt alta getir */
+    align-items: flex-start; /* Öğeleri sola hizala */
+    gap: 5px; /* Label ve input arası boşluk */
+  }
+
+  label {
+    width: auto; /* Sabit genişliği kaldır */
+    margin-bottom: 3px; /* Input ile arasına küçük bir boşluk ekle */
+  }
+
+  input[type="number"], /* input[type="text"] zaten hedeflenmişti, number'ı da ekleyelim */
+  input[type="text"] {
+    max-width: 60%; /* Maksimum genişliği kaldırarak tam genişliğe izin ver */
+    width: 100%; /* Genişliği %100 yap */
+    font-size: 15px; /* Yazı boyutunu küçült */
+  }
+
+
+  .calculate-btn {
+    font-size: 17px; /* Buton yazı boyutunu ayarla */
+    padding: 10px; /* Buton iç boşluğunu ayarla */
+    max-width: 100%; /* Butonun tam genişliğe yayılmasına izin ver */
+  }
+
+  .result-container {
+    font-size: 24px; /* Sonuç yazı boyutunu ayarla */
+    padding: 15px;
+  }
+
+  .result-title {
+    font-size: 24px;
+  }
+
+  .result-value {
+    font-size: 32px;
+  }
+
+  #extraResults p,
+  .status-box {
+      font-size: 18px; /* Ekstra sonuçlar ve durum kutusu yazı boyutu */
+  }
+
+    .status-box.success,
+    .status-box.fail,
+    .status-box.warning {
+        font-size: 20px; /* Durum kutusu özel yazı boyutları */
+    }
+
+  footer p {
+      font-size: 20px; /* Footer yazı boyutunu küçült */
+  }
+}
+
+/* Daha küçük ekranlar için ek ayar (örneğin 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .form-row {
+        font-size: 16px;
+    }
+
+    input[type="number"],
+    input[type="text"] {
+        font-size: 14px;
+    }
+
+    .calculate-btn {
+        font-size: 16px;
+    }
+
+     .result-container {
+        font-size: 22px;
+     }
+
+    .result-value {
+        font-size: 28px;
+    }
+
+    #extraResults p,
+    .status-box {
+      font-size: 16px; /* Ekstra sonuçlar ve durum kutusu yazı boyutu */
+    }
+
+    .status-box.success,
+    .status-box.fail,
+    .status-box.warning {
+        font-size: 18px; /* Durum kutusu özel yazı boyutları */
+    }
+
+     footer p {
+      font-size: 18px; /* Footer yazı boyutunu daha da küçült */
+    }
 
 }
