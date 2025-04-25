@@ -1,170 +1,199 @@
+/* style.css */
+
 /* Genel sayfa ayarları */
 body {
-    font-family: 'Markazi Text', serif;
-    background-color: #f9fafb;
-    color: #2d3748;
-    padding: 20px 40px;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-  .sub-note {
-    text-align: center;
-    font-size: 20px;
-    margin-top: -10px;
-    color: #718096;
-    font-style: italic;
-  }
-  
-  /* Başlıklar */
-  h1 {
-    font-size: 37px;
-    text-align: center;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 10px;
-    color: #2b6cb0;
-  }
-  h4,h5  {
-    font-size: 27px;
-    text-align: center;
-    font-weight: 700;
-    margin: 30px 0 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #2c5282;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #e2e8f0;
-  }
-  
-  h2,h6  {
-    font-size: 32px;
-    text-align: center;
-    font-weight: 700;
-    margin: 30px 0 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #2c5282;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #e2e8f0;
-  }
-  
-  h3  {
-    font-size: 25px;
-    text-align: center;
-    font-weight: 500;
-    margin: 25px 0 10px;
-    color: #4a5568;
-  }
-  
-  /* Form kutuları */
-  .form-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 15px;
-    margin-bottom: 20px;
-  }
-  
-  .form-row {
-    display: flex;
-    font-size: 19.5px;
-    justify-content: space-between;
-    align-items: center;
-    width: 41%;
-    margin: 8px 0;
-    padding: 12px 16px;
-    background-color: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
-    
-    
-  }
-  /* Tüm tarayıcılarda çalışan kod */
+  font-family: 'Markazi Text', serif;
+  background-color: #f9fafb;
+  color: #2d3748;
+  padding: 20px 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Ekstra Sonuçlar */
+#extraResults p {
+  margin: 5px 0;
+  font-weight: 600
+}
+
+.status-box {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.status-box.success {
+  background-color: green;
+  color: white;
+  font-size: 25px;
+}
+
+.status-box.fail {
+  background-color: red;
+  color: white;
+  font-size: 25px;
+}
+
+.status-box.warning {
+  background-color: yellow;
+  color: black;
+  font-size: 25px;
+}
+
+/* Başlıklar */
+h1 {
+  font-size: 37px;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  color: #2b6cb0;
+}
+h4,h5  {
+  font-size: 27px;
+  text-align: center;
+  font-weight: 700;
+  margin: 30px 0 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #2c5282;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+h2,h6  {
+  font-size: 32px;
+  text-align: center;
+  font-weight: 700;
+  margin: 30px 0 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #2c5282;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+h3  {
+  font-size: 25px;
+  text-align: center;
+  font-weight: 500;
+  margin: 25px 0 10px;
+  color: #4a5568;
+}
+
+/* Form kutuları */
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  font-size: 19.5px;
+  justify-content: space-between;
+  align-items: center;
+  width: 41%;
+  margin: 8px 0;
+  padding: 12px 16px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Tüm tarayıcılarda çalışan kod */
 input[type="number"] {
-  -moz-appearance: textfield; /* Firefox */
-  appearance: textfield; /* Modern tarayıcılar */
+-moz-appearance: textfield; /* Firefox */
+appearance: textfield; /* Modern tarayıcılar */
 }
 
 /* WebKit (Chrome, Safari, Edge, Opera, iOS Safari) */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none; /* Okları kaldır */
-  margin: 0; /* Fazladan boşluk varsa sil */
+-webkit-appearance: none; /* Okları kaldır */
+margin: 0; /* Fazladan boşluk varsa sil */
 }
-  
-  .form-row:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Label ve input düzeni */
-  label {
-    width: 120px;
-    font-weight: 500;
-    color: #4a5568;
-  }
-  
-  input[type="text"] {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-    font-family: 'Markazi Text', serif;
-    border: 1px solid #cbd5e0;
-    border-radius: 6px;
-    transition: border-color 0.2s;
-    max-width: 200px;
-  }
-  
-  input[type="text"]:focus {
-    border-color: #3182ce;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.2);
-  }
-  
-  /* Hesaplama butonu */
-  .calculate-btn {
-    display: block;
-    width: 100%;
-    max-width: 300px;
-    margin: 30px auto;
-    padding: 12px;
-    font-size: 18px;
-    font-weight: 600;
-    font-family: 'Markazi Text', serif;
-    background-color: #3182ce;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .calculate-btn:hover {
-    background-color: #2b6cb0;
-  }
-  
-  /* Sonuç bölümü */
-  .result-container {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #ebf8ff;
-    border-radius: 8px;
-    text-align: center;
-    display: none;
-  }
-  
-  .result-title {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  
-  .result-value {
-    font-size: 24px;
-    font-weight: 700;
-    color: #2b6cb0;
-  }
+
+.form-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Label ve input düzeni */
+label {
+  width: 120px;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  font-family: 'Markazi Text', serif;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  transition: border-color 0.2s;
+  max-width: 200px;
+}
+
+input[type="text"]:focus {
+  border-color: #3182ce;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.2);
+}
+
+/* Hesaplama butonu */
+.calculate-btn {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 30px auto;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Markazi Text', serif;
+  background-color: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.calculate-btn:hover {
+  background-color: #2b6cb0;
+}
+
+/* Sonuç bölümü */
+.result-container {
+  font-size: 30px;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #ebf8ff;
+  border-radius: 8px;
+  text-align: center;
+  display: none;
+}
+
+.result-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.result-value {
+  font-size: 40px;
+  font-weight: 700;
+  color: #2b6cb0;
+
+}

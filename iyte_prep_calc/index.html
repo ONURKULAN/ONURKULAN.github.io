@@ -136,6 +136,12 @@
     <div class="result-container" id="resultContainer">
       <div class="result-title">Dönem Ortalamanız:</div>
       <div class="result-value" id="resultValue">0.00</div>
+      <div id="extraResults">
+        <p id="termNote"></p>
+        <p id="finalNote"></p>
+        <p id="totalNote"></p>
+        <div id="finalStatus"></div>
+      </div>
     </div>
     <footer 
         style="margin-top: 60px; text-align: center; color: #718096; font-size: 20px;">
@@ -147,53 +153,84 @@
   </form>
 
   <script>
-    document.getElementById("calculateBtn").onclick= deneme;
-    function deneme() {
+    document.getElementById("calculateBtn").onclick = function () {
       let hesap = true;
-      const liste = [ "quiz1", "quiz2", "quiz3", "quiz4", "quiz5", "quiz6","CPG1", "CPG2", "writing", "language", "listening",  "reading", "speaking", "vocabulary", "writing2","language2", "listening2", "reading2", "vocabulary2", "FINAL"  ];
-      liste.forEach(id => {
-      let input = document.getElementById(id);
-      let değer = parseFloat(input.value);
-      let min = 0;
-      let max = parseFloat(input.max);
-
-      if (isNaN(değer) || değer < min || değer > max) {
-        input.style.border = "2px solid red";
-        hesap = false;
-      } else {
-        input.style.border = ""; // Hata yoksa kenarlığı temizle
-       }
-       });
-    if (!hesap) {
-
-      alert("Bazı notlar geçersiz. Lütfen belirtilen maksimum değerler arasında bir değer girin.");
-     } else {
-      function toplamahesabi(){
-        const q1 = Number(document.getElementById("quiz1").value);
-        const q2 = Number(document.getElementById("quiz2").value);
-        const q3 = Number(document.getElementById("quiz3").value);
-        const q4 = Number(document.getElementById("quiz4").value);
-        const q5 = Number(document.getElementById("quiz5").value);
-        const q6 = Number(document.getElementById("quiz6").value);
-        const cpg1 = Number(document.getElementById("CPG1").value);
-        const cpg2 = Number(document.getElementById("CPG2").value);
-        const writing1 = Number(document.getElementById("writing1").value);
-        const language1 = Number(document.getElementById("language1").value);
-        const listening1 = Number(document.getElementById("listening1").value);
-        const reading1 = Number(document.getElementById("reading1").value);
-        const speaking1 = Number(document.getElementById("speaking1").value);
-        const vocabulary1 = Number(document.getElementById("vocabulary1").value);
-        const writing2 = Number(document.getElementById("writing2").value);
-        const language2 = Number(document.getElementById("language2").value);
-        const listening2 = Number(document.getElementById("listening2").value);
-        const reading2 = Number(document.getElementById("reading2").value);
-        const vocabulary2 = Number(document.getElementById("vocabulary2").value);
-        let finalexam = Number(document.getElementById("finalexam").value);
-
+      let ids = [
+        "quiz1", "quiz2", "quiz3", "quiz4", "quiz5", "quiz6",
+        "CPG1", "CPG2", "writing", "language", "listening", "reading",
+        "speaking", "vocabulary", "writing2", "language2", "listening2",
+        "reading2", "vocabulary2", "FINAL"
+      ];
+  
+      ids.forEach(id => {
+        const input = document.getElementById(id);
+        const value = parseFloat(input.value);
+        if (isNaN(value) || value < 0 || value > parseFloat(input.max)) {
+          input.style.border = "2px solid red";
+          hesap = false;
+        } else {
+          input.style.border = "";
+        }
+      });
+  
+      if (!hesap) {
+        return;
+      }
+  
+      const getVal = id => parseFloat(document.getElementById(id).value);
+      const MAX_TERM_TOTAL = 440;
+  
+      const alltermnote_raw = getVal("quiz1") + getVal("quiz2") + getVal("quiz3") + getVal("quiz4") + getVal("quiz5") + getVal("quiz6") +
+        getVal("CPG1") + getVal("CPG2") + getVal("writing") + getVal("language") + getVal("listening") +
+        getVal("reading") + getVal("speaking") + getVal("vocabulary") + getVal("writing2") +
+        getVal("language2") + getVal("listening2") + getVal("reading2") + getVal("vocabulary2");
+  
+      let finalexam = getVal("FINAL");
+      const alltermnote = (alltermnote_raw / MAX_TERM_TOTAL) * 100;
+      const formatlisayi = alltermnote * 0.6 + finalexam * 0.4;
+  
+      document.getElementById("resultValue").innerText = formatlisayi.toFixed(2) + '/100';
+      document.getElementById("termNote").innerText = `Yıl içi notu: ${alltermnote.toFixed(2)} / 100`;
+      document.getElementById("finalNote").innerText = `Final notu: ${finalexam.toFixed(2)} / 100`;
       
+  
+      const statusDiv = document.getElementById("finalStatus");
+  
+      if (alltermnote < 60) {
+        statusDiv.innerText = "Finale Giremez!";
+        statusDiv.className = "status-box warning";
+        const termNote = document.getElementById("termNote");
+        termNote.style = "";
+        termNote.style.color = "red";
+        termNote.style.fontWeight = "bald";
+      } else if (isNaN(finalexam)) {
+        statusDiv.innerText = "Final notu girilmemiş. GEÇEMEZ!";
+        statusDiv.className = "status-box warning";
+      } else if (finalexam < 50) {
+        statusDiv.innerText = "Finali geçemez!";
+        statusDiv.className = "status-box warning";
+        const finalNote = document.getElementById("finalNote");
+        termNote.style = "",
 
-     }}
-}
+        finalNote.style = "";
+        finalNote.style.color = "red";
+        finalNote.style.fontWeight = "bold";
+
+      } else if (finalexam >= 50 && formatlisayi >= 60) {
+        statusDiv.innerText = "GEÇER!";
+        statusDiv.className = "status-box success";
+        finalNote.style = "";
+        termNote.style = "";
+      } else {
+        finalNote.style = "";
+        termNote.style = "";
+        statusDiv.innerText = "GEÇEMEZ!";
+        statusDiv.className = "status-box fail";
+      }
+  
+      document.getElementById("resultContainer").style.display = "block";
+    }
   </script>
+  
 </body>
 </html>
