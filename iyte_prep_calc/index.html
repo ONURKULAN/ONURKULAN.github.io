@@ -137,18 +137,19 @@
       resultValue.innerText = formatlisayi.toFixed(2) + "/100";
       termNote.innerText = `Yıl içi notu: ${alltermnote.toFixed(2)} / 100`;
       finalNote.innerText = `Final notu: ${finalexam.toFixed(2)} / 100`;
-      let withouttermexam2=cpgs+quizes +termexam1*0.3
-      let gereklinot=60
-      let  termExam2Message = (60 - (quizes + cpgs + termexam1 * 0.3)) / 0.3;
+      let withouttermexam2 = cpgs + quizes + termexam1 * 0.3;
+      let neededTermExam2Score = (60 - withouttermexam2) / 0.3;
+
+      let termExam2Message = "";
       if (neededTermExam2Score > 100) {
         termExam2Message = "Ne yazık ki, Term Exam 2'den 100 alsan bile 60 ortalamayı geçemiyorsun. Finale giremezsin.";
-}     else if (neededTermExam2Score <= 0) {
-      termExam2Message = "Term Exam 2'den 0 alsan bile finale girmeye hak kazandın!";
-    } else {
-      termExam2Message = `Finale girebilmek için Term Exam 2'den en az ${neededTermExam2Score.toFixed(2)} almalısın.`;
-      
-}
+      } else if (neededTermExam2Score <= 0) {
+        termExam2Message = "Term Exam 2'den 0 alsan bile finale girmeye hak kazandın!";
+    }   else {
+        termExam2Message = `Finale girebilmek için Term Exam 2'den en az ${neededTermExam2Score.toFixed(2)} almalısın.`;
+    }
 
+    
       termNote.style = "";
       finalNote.style = "";
       document.getElementById("termExam2Result").innerText = termExam2Message;
