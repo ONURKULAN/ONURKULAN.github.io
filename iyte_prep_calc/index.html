@@ -73,6 +73,8 @@
       <p>"This site was created by Onur Kulan and Burak Eslem Arık (Muhtar) to support İYTE preparatory students. 💻🎓"</p>
       <p>✨ This is just the beginning...</p>
       <p><em>Next project loading</em> ⏳</p>
+      <div id="termExam2Result" style="margin-top: 10px; font-weight: bold;"></div>
+
     </footer>
   </form>
 
@@ -126,7 +128,6 @@
   
       let alltermnote = quizes + termexams + cpgs;
       let formatlisayi = alltermnote * 0.6 + finalexam * 0.4;
-  
       const resultContainer = document.getElementById("resultContainer");
       const resultValue = document.getElementById("resultValue");
       const termNote = document.getElementById("termNote");
@@ -136,9 +137,21 @@
       resultValue.innerText = formatlisayi.toFixed(2) + "/100";
       termNote.innerText = `Yıl içi notu: ${alltermnote.toFixed(2)} / 100`;
       finalNote.innerText = `Final notu: ${finalexam.toFixed(2)} / 100`;
-  
+      let withouttermexam2=cpgs+quizes +termexam1*0.3
+      let gereklinot=60
+      let  termExam2Message = (60 - (quizes + cpgs + termexam1 * 0.3)) / 0.3;
+      if (neededTermExam2Score > 100) {
+        termExam2Message = "Ne yazık ki, Term Exam 2'den 100 alsan bile 60 ortalamayı geçemiyorsun. Finale giremezsin.";
+}     else if (neededTermExam2Score <= 0) {
+      termExam2Message = "Term Exam 2'den 0 alsan bile finale girmeye hak kazandın!";
+    } else {
+      termExam2Message = `Finale girebilmek için Term Exam 2'den en az ${neededTermExam2Score.toFixed(2)} almalısın.`;
+      
+}
+
       termNote.style = "";
       finalNote.style = "";
+      document.getElementById("termExam2Result").innerText = termExam2Message;
   
       if (alltermnote < 60) {
         statusDiv.innerText = "Finale Giremez!";
