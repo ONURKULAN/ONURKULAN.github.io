@@ -157,8 +157,32 @@
         statusDiv.innerText = "GEÇEMEZ!";
         statusDiv.className = "status-box fail";
       }
+      // Önce eski minimum final notu uyarısını sil (yeniden hesaplanmasın diye)
+      const oldWarning = document.getElementById("finalNeededText");
+      if (oldWarning) oldWarning.remove();
+
+// Yeni bir <p> oluştur
+      const neededNote = document.createElement("p");
+      neededNote.id = "finalNeededText"; // sonraki tıklamalarda silmek için
+      neededNote.style.color = "red";
+neededNote.style.fontWeight = "bold";
   
       resultContainer.style.display = "block";
+      if (alltermnote >= 60) {
+
+        let minFinal = (60 - alltermnote * 0.6) / 0.4;
+        if (minFinal > 100) {
+        neededNote.innerText = "Yıl içi notun çok düşük, 100 alsan bile geçemezsin.";
+    }   else if (minFinal > 50) {
+        neededNote.innerText = `Geçmek için finalden en az ${minFinal.toFixed(2)} almalısın.`;
+   }    else {
+        neededNote.innerText = "Finalden en az 50 almalısın (minimum geçme şartı).";
+  }
+
+  // BU SATIRI BURAYA AL
+        finalNote.parentNode.insertBefore(neededNote, finalNote.nextSibling);
+}
+
     };
   </script>
   
