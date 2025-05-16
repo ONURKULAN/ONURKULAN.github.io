@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
@@ -9,188 +10,276 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&display=swap" rel="stylesheet" />
 </head>
+
 <body>
   <h1>İYTE Hazırlık Ortalama Hesaplama</h1>
   <h3>Notlarınızı girerek yıl sonu ortalamanızı hesaplayabilirsiniz</h3>
 
   <form id="gradeForm">
-    <!-- Fall Term -->
     <h2>Fall Term</h2>
     <div class="form-container">
+      <!-- Quiz Inputs -->
       <div class="form-row"><label for="quiz1">Quiz 1</label><input type="number" id="quiz1" placeholder="0-40" step="0.1" min="0" max="40" required /></div>
       <div class="form-row"><label for="quiz2">Quiz 2</label><input type="number" id="quiz2" placeholder="0-40" step="0.1" min="0" max="40" required /></div>
       <div class="form-row"><label for="quiz3">Quiz 3</label><input type="number" id="quiz3" placeholder="0-40" step="0.1" min="0" max="40" required /></div>
-      <div class="form-row"><label for="cpg1">CPG 1</label><input type="number" id="cpg1" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
+      <div class="form-row"><label for="CPG1">CPG 1</label><input type="number" id="cpg1" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
     </div>
 
-    <!-- Term Exam 1 -->
-    <h4>Term Exam 1</h4>
-    <div class="form-container">
-      <div class="form-row"><label for="writing1">Writing</label><input type="number" id="writing1" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
-      <div class="form-row"><label for="language1">Language</label><input type="number" id="language1" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
-      <div class="form-row"><label for="listening1">Listening</label><input type="number" id="listening1" placeholder="0-10" step="0.1" min="0" max="10" required /></div>
-      <div class="form-row"><label for="reading1">Reading</label><input type="number" id="reading1" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
-      <div class="form-row"><label for="speaking1">Speaking</label><input type="number" id="speaking1" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
-      <div class="form-row"><label for="vocabulary1">Vocabulary</label><input type="number" id="vocabulary1" placeholder="0-10" step="0.1" min="0" max="10" required /></div>
-    </div>
+```
+<h4>Term Exam 1</h4>
+<div class="form-container">
+  <!-- Term Exam 1 Inputs -->
+  <div class="form-row"><label for="writing1">Writing</label><input type="number" id="writing1" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
+  <div class="form-row"><label for="language1">Language</label><input type="number" id="language1" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
+  <div class="form-row"><label for="listening1">Listening</label><input type="number" id="listening1" placeholder="0-10" step="0.1" min="0" max="10" required /></div>
+  <div class="form-row"><label for="reading1">Reading</label><input type="number" id="reading1" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
+  <div class="form-row"><label for="speaking1">Speaking</label><input type="number" id="speaking1" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
+  <div class="form-row"><label for="vocabulary1">Vocabulary</label><input type="number" id="vocabulary1" placeholder="0-10" step="0.1" min="0" max="10" required /></div>
+</div>
 
-    <!-- Spring Term -->
-    <h6>Spring Term</h6>
-    <div class="form-container">
-      <div class="form-row"><label for="quiz4">Quiz 4</label><input type="number" id="quiz4" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
-      <div class="form-row"><label for="quiz5">Quiz 5</label><input type="number" id="quiz5" placeholder="0-40" step="0.1" min="0" max="40" required /></div>
-      <div class="form-row"><label for="quiz6">Quiz 6</label><input type="number" id="quiz6" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
-      <div class="form-row"><label for="cpg2">CPG 2</label><input type="number" id="cpg2" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
-    </div>
+<h6>Spring Term</h6>
+<div class="form-container">
+  <!-- Spring Term Inputs -->
+  <div class="form-row"><label for="quiz4">Quiz 4</label><input type="number" id="quiz4" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
+  <div class="form-row"><label for="quiz5">Quiz 5</label><input type="number" id="quiz5" placeholder="0-40" step="0.1" min="0" max="40" required /></div>
+  <div class="form-row"><label for="quiz6">Quiz 6</label><input type="number" id="quiz6" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
+  <div class="form-row"><label for="CPG2">CPG 2</label><input type="number" id="cpg2" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
+</div>
 
-    <!-- Term Exam 2 -->
-    <h5>Term Exam 2</h5>
-    <div class="form-container">
-      <div class="form-row"><label for="writing2">Writing</label><input type="number" id="writing2" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
-      <div class="form-row"><label for="language2">Language</label><input type="number" id="language2" placeholder="0-25" step="0.1" min="0" max="25" required /></div>
-      <div class="form-row"><label for="listening2">Listening</label><input type="number" id="listening2" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
-      <div class="form-row"><label for="reading2">Reading</label><input type="number" id="reading2" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
-      <div class="form-row"><label for="vocabulary2">Vocabulary</label><input type="number" id="vocabulary2" placeholder="0-15" step="0.1" min="0" max="15" required /></div>
-    </div>
+<h5>Term Exam 2</h5>
+<div class="form-container">
+  <!-- Term Exam 2 Inputs -->
+  <div class="form-row"><label for="writing2">Writing</label><input type="number" id="writing2" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
+  <div class="form-row"><label for="language2">Language</label><input type="number" id="language2" placeholder="0-25" step="0.1" min="0" max="25" required /></div>
+  <div class="form-row"><label for="listening2">Listening</label><input type="number" id="listening2" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
+  <div class="form-row"><label for="reading2">Reading</label><input type="number" id="reading2" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
+  <div class="form-row"><label for="vocabulary2">Vocabulary</label><input type="number" id="vocabulary2" placeholder="0-15" step="0.1" min="0" max="15" required /></div>
+</div>
 
-    <!-- Final Exam -->
-    <h6>Final Exam</h6>
-    <div class="form-row"><label for="FINAL">Final Exam</label><input type="number" id="FINAL" placeholder="0-100" step="0.1" min="0" max="100" required /></div>
-    <button type="button" id="calculateBtn" class="calculate-btn">Ortalamayı Hesapla</button>
+<h6>Final Exam</h6>
+<div class="form-row"><label for="FINAL">Final Exam</label><input type="number" id="FINAL" placeholder="0-100" step="0.1" min="0" max="100" required /></div>
+<button type="button" id="calculateBtn" class="calculate-btn">Ortalamayı Hesapla</button>
 
-    <div class="result-container" id="resultContainer">
-      <div class="result-title">Dönem Ortalamanız:</div>
-      <div class="result-value" id="resultValue">0.00</div>
-      <div id="extraResults">
-        <p id="termNote"></p>
-        <p id="finalNote"></p>
-        <div id="finalStatus"></div>
-      </div>
-    </div>
+<div class="result-container" id="resultContainer">
+  <div class="result-title">Dönem Ortalamanız:</div>
+  <div class="result-value" id="resultValue">0.00</div>
+  <div id="extraResults">
+    <p id="termNote"></p>
+    <p id="finalNote"></p>
+    <p id="totalNote"></p>
+    <div id="finalStatus"></div>
+  </div>
+</div>
 
-    <footer style="margin-top: 60px; text-align: center; color: #718096; font-size: 28px;">
-      <p>"This site was created by Onur Kulan and Burak Eslem Arık (Muhtar) to support İYTE preparatory students. 💻🎓"</p>
-      <p>✨ This is just the beginning...</p>
-      <p><em>Next project loading</em> ⏳</p>
-    </footer>
+<footer style="margin-top: 60px; text-align: center; color: #718096; font-size: 28px;">
+  <p>"This site was created by Onur Kulan and Burak Eslem Arık (Muhtar) to support İYTE preparatory students. 💻🎓"</p>
+  <p>✨ This is just the beginning...</p>
+  <p><em>Next project loading</em> ⏳</p>
+</footer>
+```
+
   </form>
-
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <!-- Meta ve stil bağlantıları değişmedi -->
-</head>
-<body>
-  <!-- HTML yapısı değişmedi -->
 
   <script>
     document.getElementById("calculateBtn").onclick = function () {
-      // 1. Sabitler ve değişkenler en başta tanımlandı (sarı uyarı çözümü)
+      let hesap = true;
+      let ids = [
+        "quiz1", "quiz2", "quiz3", "quiz4", "quiz5", "quiz6",
+        "cpg1", "cpg2", "writing1", "language1", "listening1", "reading1",
+        "speaking1", "vocabulary1", "writing2", "language2", "listening2",
+        "reading2", "vocabulary2", "FINAL"
+      ];
+    
+      ids.forEach(id => {
+        const input = document.getElementById(id);
+        const value = parseFloat(input.value);
+        const maxVal = parseFloat(input.max);
+        if (isNaN(value) || value < 0 || value > maxVal) {
+          input.style.border = "2px solid red";
+          hesap = false;
+        } else {
+          input.style.border = "";
+        }
+      });
+    
+      if (!hesap) {
+        alert("Lütfen tüm alanları doğru (0 ile belirtilen maksimum değer arasında) doldurduğunuzdan emin olun.");
+        return;
+      }
+    
+      const getVal = id => parseFloat(document.getElementById(id).value);
+    
+      // Güz Dönemi Girdileri
+      let q1 = getVal("quiz1"); // Max 40
+      let q2 = getVal("quiz2"); // Max 40
+      let q3 = getVal("quiz3"); // Max 40
+      let cpg1 = getVal("cpg1"); // Max 20
+      let writing1 = getVal("writing1"), language1 = getVal("language1"), listening1 = getVal("listening1"),
+          reading1 = getVal("reading1"), speaking1 = getVal("speaking1"), vocabulary1 = getVal("vocabulary1");
+      let termexam1_raw = writing1 + language1 + listening1 + reading1 + speaking1 + vocabulary1; // Max 100
+    
+      // Bahar Dönemi Girdileri
+      let q4 = getVal("quiz4"); // Max 20
+      let q5 = getVal("quiz5"); // Max 40
+      let q6 = getVal("quiz6"); // Max 20
+      let cpg2 = getVal("cpg2"); // Max 20
+      let writing2 = getVal("writing2"), language2 = getVal("language2"), listening2 = getVal("listening2"),
+          reading2 = getVal("reading2"), vocabulary2 = getVal("vocabulary2");
+      let termexam2_raw = writing2 + language2 + listening2 + reading2 + vocabulary2; // Max 100
+    
+      // Final Sınavı
+      let finalExamScore = getVal("FINAL"); // Max 100
+    
+      // --- HESAPLAMALAR (HANDBOOK'A GÖRE) ---
+    
+      // 1. Güz Dönemi Notunu Hesapla (100 üzerinden)
+      // CPG Katkısı (Handbook %20 diyor, cpg1 input max 20 olduğu için direkt kullanıyoruz)
+      let cpg1_contribution_fall = cpg1;
+      // Quiz Katkısı (Handbook %20 diyor. Güz quizleri toplam max 120. Bu 120'yi 20 puana ölçekliyoruz)
+      let quizzes_total_fall = q1 + q2 + q3; // Max 120
+      let quizzes_contribution_fall = (quizzes_total_fall / 120) * 20;
+      // Term Exam 1 Katkısı (Handbook %60 diyor)
+      let termexam1_contribution_fall = termexam1_raw * 0.60;
+      let fallTermGrade100 = cpg1_contribution_fall + quizzes_contribution_fall + termexam1_contribution_fall;
+    
+      // 2. Bahar Dönemi Notunu Hesapla (100 üzerinden)
+      // CPG Katkısı
+      let cpg2_contribution_spring = cpg2;
+      // Quiz Katkısı (Bahar quizleri toplam max 80. Bu 80'i 20 puana ölçekliyoruz)
+      let quizzes_total_spring = q4 + q5 + q6; // Max 80
+      let quizzes_contribution_spring = (quizzes_total_spring / 80) * 20;
+      // Term Exam 2 Katkısı
+      let termexam2_contribution_spring = termexam2_raw * 0.60;
+      let springTermGrade100 = cpg2_contribution_spring + quizzes_contribution_spring + termexam2_contribution_spring;
+    
+      // 3. Yearly Achievement Score (Yıl İçi Başarı Puanı) Hesapla
+      let yearlyAchievementScore = (fallTermGrade100 + springTermGrade100) / 2;
+    
+      // 4. End of Year Success Score (Yıl Sonu Başarı Puanı / Nihai Not) Hesapla
+      let endOfYearSuccessScore = (yearlyAchievementScore * 0.60) + (finalExamScore * 0.40);
+    
+      // --- Sonuçları Gösterme ---
+      const resultContainer = document.getElementById("resultContainer");
+      const resultValue = document.getElementById("resultValue"); // Bu nihai notu gösterecek
+      const termNote = document.getElementById("termNote"); // Bu Yıl İçi Başarı Puanını gösterecek
+      const finalNote = document.getElementById("finalNote"); // Bu Final Sınavı Notunu gösterecek
+      const statusDiv = document.getElementById("finalStatus");
+      // Opsiyonel olarak Güz ve Bahar dönem notlarını göstermek için yeni <p> ekleyebilirsiniz.
+      // Örnek: const fallTermDisplay = document.getElementById("fallTermDisplay");
+      // Örnek: const springTermDisplay = document.getElementById("springTermDisplay");
+      const totalNote = document.getElementById("totalNote"); // Bu ID'li element HTML'de yoksa ve gereksizse kaldırın ya da amacına uygun kullanın.
+                                                              // Şimdilik bunu Yıl İçi Notu olarak kullanacağım, termNote'u da Güz için.
+                                                              // Handbook'a göre termNote (Yıl içi notu) = yearlyAchievementScore olmalı.
+                    if (yearlyAchievementScore < MIN_YEARLY_FOR_FINAL) {
+  // Finale giremeyenler için mesaj ve sadece dönem içi puan gösterimi
+      statusDiv.innerText = "Yıl İçi Başarı Puanınız 60'ın altında olduğu için Finale Giremezsiniz! KALDINIZ!";
+      statusDiv.className = "status-box fail";
+
+  // Sadece dönem içi başarı puanını ve uyarıyı göster
+      resultValue.innerText = yearlyAchievementScore.toFixed(2) + "/100";
+      termNote.innerText = `Yıl İçi Başarı Puanı: ${yearlyAchievementScore.toFixed(2)} / 100 (Finale Girilemedi)`;
+      finalNote.innerText = "";  // Final notunu gizle
+
+
+  // Sonuç konteynerini mutlaka görünür yapın
+      resultContainer.style.display = "block";
+
+  // Fonksiyonu burada sonlandırın
+  return;
+}
+                                          
+   
+      termNote.innerText = `Yıl İçi Başarı Puanı: ${yearlyAchievementScore.toFixed(2)} / 100`;
+      finalNote.innerText = `Final Sınavı Puanı: ${finalExamScore.toFixed(2)} / 100`;
+    
+      // Güz ve Bahar notlarını da göstermek isterseniz:
+      // Fall term için:
+      let fallTermDisplayP = document.getElementById("fallTermDisplay");
+      if (!fallTermDisplayP) {
+        fallTermDisplayP = document.createElement("p");
+        fallTermDisplayP.id = "fallTermDisplay";
+        termNote.parentNode.insertBefore(fallTermDisplayP, termNote); // termNote'un öncesine ekleyelim
+      }
+      fallTermDisplayP.innerText = `Güz Dönemi Notu: ${fallTermGrade100.toFixed(2)} / 100`;
+      fallTermDisplayP.style = "";
+    
+      // Spring term için:
+      let springTermDisplayP = document.getElementById("springTermDisplay");
+      if (!springTermDisplayP) {
+        springTermDisplayP = document.createElement("p");
+        springTermDisplayP.id = "springTermDisplay";
+        termNote.parentNode.insertBefore(springTermDisplayP, termNote); // termNote'un öncesine ekleyelim
+      }
+      springTermDisplayP.innerText = `Bahar Dönemi Notu: ${springTermGrade100.toFixed(2)} / 100`;
+      springTermDisplayP.style = "";
+    
+    
+      termNote.style = ""; // Yıl içi notu için stilleri sıfırla
+      finalNote.style = "";
+    
+      // Geçme/Kalma Koşulları (Handbook'a göre)
       const MIN_YEARLY_FOR_FINAL = 60;
       const MIN_FINAL_SCORE = 50;
       const MIN_OVERALL_PASS_SCORE = 60;
-      
-      let hesap = true,
-          yearly, // Değişken ön tanımlama
-          overall; 
-
-      // 2. Input validasyonu (değişmedi)
-      const ids = ["quiz1","quiz2","quiz3","quiz4","quiz5","quiz6","cpg1","cpg2","writing1","language1","listening1","reading1","speaking1","vocabulary1","writing2","language2","listening2","reading2","vocabulary2","FINAL"];
-      ids.forEach(id => {
-        const input = document.getElementById(id);
-        const v = parseFloat(input.value);
-        if (isNaN(v) || v < 0 || v > parseFloat(input.max)) {
-          input.style.border = "2px solid red";
-          hesap = false;
-        } else input.style.border = "";
-      });
-      
-      if (!hesap) {
-        alert("Lütfen tüm alanları doğru doldurun!");
-        return;
-      }
-
-      // 3. Değişkenlere değer atama (daha okunaklı hale getirildi)
-      const quiz1 = getVal("quiz1"),
-            quiz2 = getVal("quiz2"),
-            quiz3 = getVal("quiz3"),
-            cpg1 = getVal("cpg1"),
-            writing1 = getVal("writing1"),
-            language1 = getVal("language1"),
-            listening1 = getVal("listening1"),
-            reading1 = getVal("reading1"),
-            speaking1 = getVal("speaking1"),
-            vocabulary1 = getVal("vocabulary1"),
-            termExam1 = writing1 + language1 + listening1 + reading1 + speaking1 + vocabulary1;
-
-      const quiz4 = getVal("quiz4"),
-            quiz5 = getVal("quiz5"),
-            quiz6 = getVal("quiz6"),
-            cpg2 = getVal("cpg2"),
-            writing2 = getVal("writing2"),
-            language2 = getVal("language2"),
-            listening2 = getVal("listening2"),
-            reading2 = getVal("reading2"),
-            vocabulary2 = getVal("vocabulary2"),
-            termExam2 = writing2 + language2 + listening2 + reading2 + vocabulary2;
-
-      const finalScore = getVal("FINAL");
-
-      // 4. Hesaplamalar (El Kitabı formülleriyle tam uyumlu)
-      const fallTermGrade = cpg1 + ((quiz1 + quiz2 + quiz3) / 120 * 20) + (termExam1 * 0.60);
-      const springTermGrade = cpg2 + ((quiz4 + quiz5 + quiz6) / 80 * 20) + (termExam2 * 0.60);
-      yearly = (fallTermGrade + springTermGrade) / 2; // Yıl içi başarı puanı
-      overall = (yearly * 0.60) + (finalScore * 0.40); // Genel ortalama
-
-      // 5. Sonuç gösterimi
-      const resultContainer = document.getElementById("resultContainer"),
-            resultValue = document.getElementById("resultValue"),
-            termNote = document.getElementById("termNote"),
-            finalNote = document.getElementById("finalNote"),
-            statusDiv = document.getElementById("finalStatus");
-
-      // 6. Finale girememe kontrolü
-      if (yearly < MIN_YEARLY_FOR_FINAL) {
-        resultValue.textContent = `${yearly.toFixed(2)}/100`;
-        termNote.textContent = `Yıl İçi Puan: ${yearly.toFixed(2)}/100 (Finale Girilemedi)`;
-        finalNote.textContent = "";
-        statusDiv.textContent = "Yıl İçi Puanınız 60'ın Altında! KALDINIZ!";
+    
+      if (yearlyAchievementScore < MIN_YEARLY_FOR_FINAL) {
+        statusDiv.innerText = "Yıl İçi Başarı Puanınız düşük olduğu için Finale Giremezsiniz!";
+        statusDiv.className = "status-box warning";
+        termNote.style.color = "red";
+        termNote.style.fontWeight = "bold";
+        // Finale giremiyorsa, finalden kaç alması gerektiği bilgisini gösterme
+        const oldWarning = document.getElementById("finalNeededText");
+        if (oldWarning) oldWarning.remove();
+      } else if (finalExamScore < MIN_FINAL_SCORE) {
+        statusDiv.innerText = "Final Sınavı Puanınız 50'nin altında olduğu için KALDINIZ!";
         statusDiv.className = "status-box fail";
-        resultContainer.style.display = "block";
-        return;
-      }
-
-      // 7. Genel sonuçlar
-      resultValue.textContent = `${overall.toFixed(2)}/100`;
-      termNote.textContent = `Yıl İçi Puan: ${yearly.toFixed(2)}/100`;
-      finalNote.textContent = `Final Puanı: ${finalScore.toFixed(2)}/100`;
-      resultContainer.style.display = "block";
-
-      // 8. Geçme/Kalma durumu
-      if (finalScore < MIN_FINAL_SCORE) {
-        statusDiv.textContent = "Final Puanı 50'nin Altında! KALDINIZ!";
-        statusDiv.className = "status-box fail";
-      } else if (overall >= MIN_OVERALL_PASS_SCORE) {
-        statusDiv.textContent = "GEÇTİNİZ! 🎉";
+        finalNote.style.color = "red";
+        finalNote.style.fontWeight = "bold";
+      } else if (endOfYearSuccessScore >= MIN_OVERALL_PASS_SCORE) {
+        statusDiv.innerText = "GEÇTİNİZ!";
         statusDiv.className = "status-box success";
       } else {
-        statusDiv.textContent = "Genel Ortalama Düşük! KALDINIZ!";
+        statusDiv.innerText = "KALDINIZ! (Genel Ortalama Düşük)";
         statusDiv.className = "status-box fail";
       }
-
-      // 9. Gerekli final puanı hesaplama
-      const minRequiredFinal = Math.max(
-        MIN_FINAL_SCORE,
-        (MIN_OVERALL_PASS_SCORE - (yearly * 0.60)) / 0.40
-      );
-      const neededElement = document.createElement("p");
-      neededElement.id = "finalNeededText";
-      neededElement.textContent = `Geçmek için finalden en az ${minRequiredFinal.toFixed(2)} gerekli.`;
-      neededElement.style.color = finalScore >= minRequiredFinal ? "green" : "red";
-      finalNote.parentNode.insertBefore(neededElement, finalNote.nextSibling);
+    
+      // Finalden kaç alması gerektiği hesaplaması (sadece finale girebiliyorsa göster)
+      const oldWarning = document.getElementById("finalNeededText");
+      if (oldWarning) oldWarning.remove();
+    
+      if (yearlyAchievementScore >= MIN_YEARLY_FOR_FINAL) {
+        const neededNoteElement = document.createElement("p");
+        neededNoteElement.id = "finalNeededText";
+        neededNoteElement.style.fontWeight = "bold"; // Rengi duruma göre ayarla
+    
+        // Geçmek için gereken minimum final notu:
+        // endOfYearSuccessScore >= MIN_OVERALL_PASS_SCORE  ve finalExamScore >= MIN_FINAL_SCORE olmalı
+        // (yearlyAchievementScore * 0.60) + (minFinalForOverallPass * 0.40) = MIN_OVERALL_PASS_SCORE
+        let minFinalForOverallPass = (MIN_OVERALL_PASS_SCORE - (yearlyAchievementScore * 0.60)) / 0.40;
+    
+        // Gerçekte alması gereken minimum final notu, hem 50'den hem de genel ortalamayı sağlayacak değerden büyük olanıdır.
+        let actualMinFinalNeeded = Math.max(MIN_FINAL_SCORE, minFinalForOverallPass);
+    
+        if (actualMinFinalNeeded > 100) {
+          neededNoteElement.innerText = "Yıl içi puanınızla, finalden 100 alsanız bile geçmeniz mümkün değil.";
+          neededNoteElement.style.color = "red";
+        } else {
+          neededNoteElement.innerText = `Dersi geçmek için finalden en az ${actualMinFinalNeeded.toFixed(2)} almanız gerekmektedir.`;
+          if (finalExamScore < actualMinFinalNeeded && finalExamScore >= MIN_FINAL_SCORE) { // Finalden 50 almış ama ortalamayı tutturamamışsa
+              neededNoteElement.style.color = "orange";
+          } else if (finalExamScore < MIN_FINAL_SCORE) {
+               neededNoteElement.style.color = "red"; // Zaten finalden kalmışsa
+          }
+          else {
+              neededNoteElement.style.color = "green"; // Gerekli notu almış veya üstündeyse
+          }
+        }
+        // Final notu bilgisinin altına ekle
+        finalNote.parentNode.insertBefore(neededNoteElement, finalNote.nextSibling);
+      }
+      resultContainer.style.display = "block";
     };
   </script>
+
 </body>
-</html>
-</body>
-</html>
+</html>  
