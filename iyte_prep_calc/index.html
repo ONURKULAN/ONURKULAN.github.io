@@ -212,6 +212,7 @@
         statusDiv.className = "status-box warning";
         termNote.style.color = "red";
         termNote.style.fontWeight = "bold";
+        overallScoreNote.style.display = "none"; 
         // Finale giremiyorsa, finalden kaç alması gerektiği bilgisini gösterme
         const oldWarning = document.getElementById("finalNeededText");
         if (oldWarning) oldWarning.remove();
