@@ -202,17 +202,10 @@
       const MIN_OVERALL_PASS_SCORE = 60;
     
       if (yearlyAchievementScore < MIN_YEARLY_FOR_FINAL) {
-
-        resultValue.innerText = yearlyAchievementScore.toFixed(2) + "/100";
-        termNote.innerText = `Yıl İçi Başarı Puanı: ${yearlyAchievementScore.toFixed(2)} / 100 (Finale Girilemedi)`;
-        finalNote.innerText = ""; // Final puanını gizle
-
-
         statusDiv.innerText = "Yıl İçi Başarı Puanınız düşük olduğu için Finale Giremezsiniz!";
         statusDiv.className = "status-box warning";
         termNote.style.color = "red";
         termNote.style.fontWeight = "bold";
-        overallScoreNote.style.display = "none"; 
         // Finale giremiyorsa, finalden kaç alması gerektiği bilgisini gösterme
         const oldWarning = document.getElementById("finalNeededText");
         if (oldWarning) oldWarning.remove();
