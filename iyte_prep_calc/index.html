@@ -76,6 +76,9 @@
     </footer>
   </form>
 
+  </form> <!-- Form burada bitti -->
+
+  <!-- JavaScript dosyasını formun dışına aldık çünkü sayfa yüklenirken buton henüz DOM'da olmayabiliyor -->
   <script>
     document.getElementById("calculateBtn").onclick = function () {
       let hesap = true;
@@ -85,180 +88,82 @@
         "speaking1", "vocabulary1", "writing2", "language2", "listening2",
         "reading2", "vocabulary2", "FINAL"
       ];
-    
+
       ids.forEach(id => {
         const input = document.getElementById(id);
         const value = parseFloat(input.value);
-        const maxVal = parseFloat(input.max);
-        if (isNaN(value) || value < 0 || value > maxVal) {
+        if (isNaN(value) || value < 0 || value > parseFloat(input.max)) {
           input.style.border = "2px solid red";
           hesap = false;
         } else {
           input.style.border = "";
         }
       });
-    
+
       if (!hesap) {
-        alert("Lütfen tüm alanları doğru (0 ile belirtilen maksimum değer arasında) doldurduğunuzdan emin olun.");
         return;
       }
-    
+
       const getVal = id => parseFloat(document.getElementById(id).value);
-    
-      // Güz Dönemi Girdileri
-      let q1 = getVal("quiz1"); // Max 40
-      let q2 = getVal("quiz2"); // Max 40
-      let q3 = getVal("quiz3"); // Max 40
-      let cpg1 = getVal("cpg1"); // Max 20
-      let writing1 = getVal("writing1"), language1 = getVal("language1"), listening1 = getVal("listening1"),
-          reading1 = getVal("reading1"), speaking1 = getVal("speaking1"), vocabulary1 = getVal("vocabulary1");
-      let termexam1_raw = writing1 + language1 + listening1 + reading1 + speaking1 + vocabulary1; // Max 100
-    
-      // Bahar Dönemi Girdileri
-      let q4 = getVal("quiz4"); // Max 20
-      let q5 = getVal("quiz5"); // Max 40
-      let q6 = getVal("quiz6"); // Max 20
-      let cpg2 = getVal("cpg2"); // Max 20
-      let writing2 = getVal("writing2"), language2 = getVal("language2"), listening2 = getVal("listening2"),
-          reading2 = getVal("reading2"), vocabulary2 = getVal("vocabulary2");
-      let termexam2_raw = writing2 + language2 + listening2 + reading2 + vocabulary2; // Max 100
-    
-      // Final Sınavı
-      let finalExamScore = getVal("FINAL"); // Max 100
-    
-      // --- HESAPLAMALAR (HANDBOOK'A GÖRE) ---
-    
-      // 1. Güz Dönemi Notunu Hesapla (100 üzerinden)
-      // CPG Katkısı (Handbook %20 diyor, cpg1 input max 20 olduğu için direkt kullanıyoruz)
-      let cpg1_contribution_fall = cpg1;
-      // Quiz Katkısı (Handbook %20 diyor. Güz quizleri toplam max 120. Bu 120'yi 20 puana ölçekliyoruz)
-      let quizzes_total_fall = q1 + q2 + q3; // Max 120
-      let quizzes_contribution_fall = (quizzes_total_fall / 120) * 20;
-      // Term Exam 1 Katkısı (Handbook %60 diyor)
-      let termexam1_contribution_fall = termexam1_raw * 0.60;
-      let fallTermGrade100 = cpg1_contribution_fall + quizzes_contribution_fall + termexam1_contribution_fall;
-    
-      // 2. Bahar Dönemi Notunu Hesapla (100 üzerinden)
-      // CPG Katkısı
-      let cpg2_contribution_spring = cpg2;
-      // Quiz Katkısı (Bahar quizleri toplam max 80. Bu 80'i 20 puana ölçekliyoruz)
-      let quizzes_total_spring = q4 + q5 + q6; // Max 80
-      let quizzes_contribution_spring = (quizzes_total_spring / 80) * 20;
-      // Term Exam 2 Katkısı
-      let termexam2_contribution_spring = termexam2_raw * 0.60;
-      let springTermGrade100 = cpg2_contribution_spring + quizzes_contribution_spring + termexam2_contribution_spring;
-    
-      // 3. Yearly Achievement Score (Yıl İçi Başarı Puanı) Hesapla
-      let yearlyAchievementScore = (fallTermGrade100 + springTermGrade100) / 2;
-    
-      // 4. End of Year Success Score (Yıl Sonu Başarı Puanı / Nihai Not) Hesapla
-      let endOfYearSuccessScore = (yearlyAchievementScore * 0.60) + (finalExamScore * 0.40);
-    
-      // --- Sonuçları Gösterme ---
+
+      let q1 = getVal("quiz1"), q2 = getVal("quiz2"), q3 = getVal("quiz3");
+      let q4 = getVal("quiz4"), q5 = getVal("quiz5"), q6 = getVal("quiz6");
+
+      let cpg1 = getVal("cpg1"), cpg2 = getVal("cpg2");
+
+      let writing1 = getVal("writing1"), language1 = getVal("language1");
+      let listening1 = getVal("listening1"), reading1 = getVal("reading1");
+      let speaking1 = getVal("speaking1"), vocabulary1 = getVal("vocabulary1");
+
+      let writing2 = getVal("writing2"), language2 = getVal("language2");
+      let listening2 = getVal("listening2"), reading2 = getVal("reading2");
+      let vocabulary2 = getVal("vocabulary2");
+
+      let finalexam = getVal("FINAL");
+
+      let quizes = (q1 + q2 + q3 + q4 + q5 + q6) * 0.1;
+      let termexam1 = (writing1 + language1 + listening1 + reading1 + speaking1 + vocabulary1) * 6 / 10;
+      let termexam2 = (writing2 + language2 + listening2 + reading2 + vocabulary2)* 6 /10;
+      let cpgs = (cpg1 + cpg2) / 2;
+
+      let yil_ici_basari_puani = quizes + termexam1 / 2 + termexam2 / 2 + cpgs;
+      let yil_sonu_basari_puani = yil_ici_basari_puani * 0.6 + finalexam * 0.4;
+
       const resultContainer = document.getElementById("resultContainer");
-      const resultValue = document.getElementById("resultValue"); // Bu nihai notu gösterecek
-      const termNote = document.getElementById("termNote"); // Bu Yıl İçi Başarı Puanını gösterecek
-      const finalNote = document.getElementById("finalNote"); // Bu Final Sınavı Notunu gösterecek
+      const resultValue = document.getElementById("resultValue");
+      const termNote = document.getElementById("termNote");
+      const finalNote = document.getElementById("finalNote");
       const statusDiv = document.getElementById("finalStatus");
-      // Opsiyonel olarak Güz ve Bahar dönem notlarını göstermek için yeni <p> ekleyebilirsiniz.
-      // Örnek: const fallTermDisplay = document.getElementById("fallTermDisplay");
-      // Örnek: const springTermDisplay = document.getElementById("springTermDisplay");
-      const totalNote = document.getElementById("totalNote"); // Bu ID'li element HTML'de yoksa ve gereksizse kaldırın ya da amacına uygun kullanın.
-                                                              // Şimdilik bunu Yıl İçi Notu olarak kullanacağım, termNote'u da Güz için.
-                                                              // Handbook'a göre termNote (Yıl içi notu) = yearlyAchievementScore olmalı.
-    
-      resultValue.innerText = endOfYearSuccessScore.toFixed(2) + "/100";
-      termNote.innerText = `Yıl İçi Başarı Puanı: ${yearlyAchievementScore.toFixed(2)} / 100`;
-      finalNote.innerText = `Final Sınavı Puanı: ${finalExamScore.toFixed(2)} / 100`;
-    
-      // Güz ve Bahar notlarını da göstermek isterseniz:
-      // Fall term için:
-      let fallTermDisplayP = document.getElementById("fallTermDisplay");
-      if (!fallTermDisplayP) {
-        fallTermDisplayP = document.createElement("p");
-        fallTermDisplayP.id = "fallTermDisplay";
-        termNote.parentNode.insertBefore(fallTermDisplayP, termNote); // termNote'un öncesine ekleyelim
-      }
-      fallTermDisplayP.innerText = `Güz Dönemi Notu: ${fallTermGrade100.toFixed(2)} / 100`;
-      fallTermDisplayP.style = "";
-    
-      // Spring term için:
-      let springTermDisplayP = document.getElementById("springTermDisplay");
-      if (!springTermDisplayP) {
-        springTermDisplayP = document.createElement("p");
-        springTermDisplayP.id = "springTermDisplay";
-        termNote.parentNode.insertBefore(springTermDisplayP, termNote); // termNote'un öncesine ekleyelim
-      }
-      springTermDisplayP.innerText = `Bahar Dönemi Notu: ${springTermGrade100.toFixed(2)} / 100`;
-      springTermDisplayP.style = "";
-    
-    
-      termNote.style = ""; // Yıl içi notu için stilleri sıfırla
+
+      resultValue.innerText = yil_sonu_basari_puani.toFixed(2) + "/100";
+      termNote.innerText = `Yıl içi notu: ${yil_ici_basari_puani.toFixed(2)} / 100`;
+      finalNote.innerText = `Final notu: ${finalexam.toFixed(2)} / 100`;
+
+      termNote.style = "";
       finalNote.style = "";
-    
-      // Geçme/Kalma Koşulları (Handbook'a göre)
-      const MIN_YEARLY_FOR_FINAL = 60;
-      const MIN_FINAL_SCORE = 50;
-      const MIN_OVERALL_PASS_SCORE = 60;
-    
-      if (yearlyAchievementScore < MIN_YEARLY_FOR_FINAL) {
-        statusDiv.innerText = "Yıl İçi Başarı Puanınız düşük olduğu için Finale Giremezsiniz!";
+
+      if (yil_ici_basari_puani < 60) {
+        statusDiv.innerText = "Finale Giremez!";
         statusDiv.className = "status-box warning";
         termNote.style.color = "red";
         termNote.style.fontWeight = "bold";
-        // Finale giremiyorsa, finalden kaç alması gerektiği bilgisini gösterme
-        const oldWarning = document.getElementById("finalNeededText");
-        if (oldWarning) oldWarning.remove();
-      } else if (finalExamScore < MIN_FINAL_SCORE) {
-        statusDiv.innerText = "Final Sınavı Puanınız 50'nin altında olduğu için KALDINIZ!";
-        statusDiv.className = "status-box fail";
+      } else if (finalexam < 50) {
+        statusDiv.innerText = "Finali geçemez!";
+        statusDiv.className = "status-box warning";
         finalNote.style.color = "red";
         finalNote.style.fontWeight = "bold";
-      } else if (endOfYearSuccessScore >= MIN_OVERALL_PASS_SCORE) {
-        statusDiv.innerText = "GEÇTİNİZ!";
+      } else if (yil_sonu_basari_puani >= 60) {
+        statusDiv.innerText = "GEÇER!";
         statusDiv.className = "status-box success";
       } else {
-        statusDiv.innerText = "KALDINIZ! (Genel Ortalama Düşük)";
+        statusDiv.innerText = "GEÇEMEZ!";
         statusDiv.className = "status-box fail";
       }
-    
-      // Finalden kaç alması gerektiği hesaplaması (sadece finale girebiliyorsa göster)
-      const oldWarning = document.getElementById("finalNeededText");
-      if (oldWarning) oldWarning.remove();
-    
-      if (yearlyAchievementScore >= MIN_YEARLY_FOR_FINAL) {
-        const neededNoteElement = document.createElement("p");
-        neededNoteElement.id = "finalNeededText";
-        neededNoteElement.style.fontWeight = "bold"; // Rengi duruma göre ayarla
-    
-        // Geçmek için gereken minimum final notu:
-        // endOfYearSuccessScore >= MIN_OVERALL_PASS_SCORE  ve finalExamScore >= MIN_FINAL_SCORE olmalı
-        // (yearlyAchievementScore * 0.60) + (minFinalForOverallPass * 0.40) = MIN_OVERALL_PASS_SCORE
-        let minFinalForOverallPass = (MIN_OVERALL_PASS_SCORE - (yearlyAchievementScore * 0.60)) / 0.40;
-    
-        // Gerçekte alması gereken minimum final notu, hem 50'den hem de genel ortalamayı sağlayacak değerden büyük olanıdır.
-        let actualMinFinalNeeded = Math.max(MIN_FINAL_SCORE, minFinalForOverallPass);
-    
-        if (actualMinFinalNeeded > 100) {
-          neededNoteElement.innerText = "Yıl içi puanınızla, finalden 100 alsanız bile geçmeniz mümkün değil.";
-          neededNoteElement.style.color = "red";
-        } else {
-          neededNoteElement.innerText = `Dersi geçmek için finalden en az ${actualMinFinalNeeded.toFixed(2)} almanız gerekmektedir.`;
-          if (finalExamScore < actualMinFinalNeeded && finalExamScore >= MIN_FINAL_SCORE) { // Finalden 50 almış ama ortalamayı tutturamamışsa
-              neededNoteElement.style.color = "orange";
-          } else if (finalExamScore < MIN_FINAL_SCORE) {
-               neededNoteElement.style.color = "red"; // Zaten finalden kalmışsa
-          }
-          else {
-              neededNoteElement.style.color = "green"; // Gerekli notu almış veya üstündeyse
-          }
-        }
-        // Final notu bilgisinin altına ekle
-        finalNote.parentNode.insertBefore(neededNoteElement, finalNote.nextSibling);
-      }
+
       resultContainer.style.display = "block";
     };
   </script>
+
   
 </body>
 </html>
