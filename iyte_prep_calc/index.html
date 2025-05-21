@@ -78,149 +78,117 @@
 
   <script>
     document.getElementById("calculateBtn").onclick = function () {
-      let hesap = true;
-      let ids = [
-        "quiz1", "quiz2", "quiz3", "quiz4", "quiz5", "quiz6",
-        "cpg1", "cpg2", "writing1", "language1", "listening1", "reading1",
-        "speaking1", "vocabulary1", "writing2", "language2", "listening2",
-        "reading2", "vocabulary2", "FINAL"
-      ];
-  
-      ids.forEach(id => {
-        const input = document.getElementById(id);
-        const value = parseFloat(input.value);
-        if (isNaN(value) || value < 0 || value > parseFloat(input.max)) {
-          input.style.border = "2px solid red";
-          hesap = false;
-        } else {
-          input.style.border = "";
-        }
-      });
-  
-      if (!hesap) {
-        return;
-      }
-  
-      const getVal = id => parseFloat(document.getElementById(id).value);
-  
-      let q1 = getVal("quiz1"), q2 = getVal("quiz2"), q3 = getVal("quiz3");
-      let q4 = getVal("quiz4"), q5 = getVal("quiz5"), q6 = getVal("quiz6");
-  
-      let cpg1 = getVal("cpg1"), cpg2 = getVal("cpg2");
-  
-      let writing1 = getVal("writing1"), language1 = getVal("language1");
-      let listening1 = getVal("listening1"), reading1 = getVal("reading1");
-      let speaking1 = getVal("speaking1"), vocabulary1 = getVal("vocabulary1");
-  
-      let writing2 = getVal("writing2"), language2 = getVal("language2");
-      let listening2 = getVal("listening2"), reading2 = getVal("reading2");
-      let vocabulary2 = getVal("vocabulary2");
-  
-      let finalexam = getVal("FINAL");
-  
-      let quizes = (q1 + q2 + q3 + q4 + q5 + q6) * 0.1;
-      let termexam1 = writing1 + language1 + listening1 + reading1 + speaking1 + vocabulary1;
-      let termexam2 = writing2 + language2 + listening2 + reading2 + vocabulary2;
-      let termexams = (termexam1 + termexam2) * 0.3;
-      let cpgs = (cpg1 + cpg2) / 2;
-  
-      let alltermnote = quizes + termexams + cpgs;
-      let formatlisayi = alltermnote * 0.6 + finalexam * 0.4;
-  
-      const resultContainer = document.getElementById("resultContainer");
-      const resultValue = document.getElementById("resultValue");
-      const termNote = document.getElementById("termNote");
-      const finalNote = document.getElementById("finalNote");
-      const statusDiv = document.getElementById("finalStatus");
-  
-      resultValue.innerText = formatlisayi.toFixed(2) + "/100";
-      termNote.innerText = `Yıl içi notu: ${alltermnote.toFixed(2)} / 100`;
-      finalNote.innerText = `Final notu: ${finalexam.toFixed(2)} / 100`;
-  
-      termNote.style = "";
-      finalNote.style = "";
-       // Geçme/Kalma Koşulları (Handbook'a göre)
-      const MIN_YEARLY_FOR_FINAL = 60;
-      const MIN_FINAL_SCORE = 50;
-      const MIN_OVERALL_PASS_SCORE = 60;
+  let hesap = true;
+  let ids = [
+    "quiz1", "quiz2", "quiz3", "quiz4", "quiz5", "quiz6",
+    "cpg1", "cpg2", "writing1", "language1", "listening1", "reading1",
+    "speaking1", "vocabulary1", "writing2", "language2", "listening2",
+    "reading2", "vocabulary2", "FINAL"
+  ];
+
+  ids.forEach(id => {
+    const input = document.getElementById(id);
+    const value = parseFloat(input.value);
+    if (isNaN(value) || value < 0 || value > parseFloat(input.max)) {
+      input.style.border = "2px solid red";
+      hesap = false;
+    } else {
+      input.style.border = "";
+    }
+  });
+
+  if (!hesap) return;
+
+  const getVal = id => parseFloat(document.getElementById(id).value);
+
+  let q1 = getVal("quiz1"), q2 = getVal("quiz2"), q3 = getVal("quiz3");
+  let q4 = getVal("quiz4"), q5 = getVal("quiz5"), q6 = getVal("quiz6");
+  let cpg1 = getVal("cpg1"), cpg2 = getVal("cpg2");
+  let writing1 = getVal("writing1"), language1 = getVal("language1");
+  let listening1 = getVal("listening1"), reading1 = getVal("reading1");
+  let speaking1 = getVal("speaking1"), vocabulary1 = getVal("vocabulary1");
+  let writing2 = getVal("writing2"), language2 = getVal("language2");
+  let listening2 = getVal("listening2"), reading2 = getVal("reading2");
+  let vocabulary2 = getVal("vocabulary2");
+  let finalexam = getVal("FINAL");
+
+  let quizes = (q1 + q2 + q3 + q4 + q5 + q6) * 0.1;
+  let termexam1 = writing1 + language1 + listening1 + reading1 + speaking1 + vocabulary1;
+  let termexam2 = writing2 + language2 + listening2 + reading2 + vocabulary2;
+  let termexams = (termexam1 + termexam2) * 0.3;
+  let cpgs = (cpg1 + cpg2) / 2;
+
+  let alltermnote = quizes + termexams + cpgs;
+  let formatlisayi = alltermnote * 0.6 + finalexam * 0.4;
+
+  // Tanımlar eklendi
+  let yearlyAchievementScore = alltermnote;
+  let finalExamScore = finalexam;
+  let endOfYearSuccessScore = formatlisayi;
+
+  const MIN_YEARLY_FOR_FINAL = 60;
+  const MIN_FINAL_SCORE = 50;
+  const MIN_OVERALL_PASS_SCORE = 60;
+
+  const resultContainer = document.getElementById("resultContainer");
+  const resultValue = document.getElementById("resultValue");
+  const termNote = document.getElementById("termNote");
+  const finalNote = document.getElementById("finalNote");
+  const statusDiv = document.getElementById("finalStatus");
+
+  resultValue.innerText = formatlisayi.toFixed(2) + "/100";
+  termNote.innerText = `Yıl içi notu: ${alltermnote.toFixed(2)} / 100`;
+  finalNote.innerText = `Final notu: ${finalexam.toFixed(2)} / 100`;
+
+  termNote.style = "";
+  finalNote.style = "";
+
+  // Eski uyarıyı temizle
+  const oldWarning = document.getElementById("finalNeededText");
+  if (oldWarning) oldWarning.remove();
+
+  // GEÇME/KALMA
+  if (yearlyAchievementScore < MIN_YEARLY_FOR_FINAL) {
+    statusDiv.innerText = "Yıl İçi Başarı Puanınız düşük olduğu için Finale Giremezsiniz!";
+    statusDiv.className = "status-box warning";
+    termNote.style.color = "red";
+    termNote.style.fontWeight = "bold";
+  } else if (finalExamScore < MIN_FINAL_SCORE) {
+    statusDiv.innerText = "Final Sınavı Puanınız 50'nin altında olduğu için KALDINIZ!";
+    statusDiv.className = "status-box fail";
+    finalNote.style.color = "red";
+    finalNote.style.fontWeight = "bold";
+  } else if (endOfYearSuccessScore >= MIN_OVERALL_PASS_SCORE) {
+    statusDiv.innerText = "GEÇTİNİZ!";
+    statusDiv.className = "status-box success";
+  } else {
+    statusDiv.innerText = "KALDINIZ! (Genel Ortalama Düşük)";
+    statusDiv.className = "status-box fail";
+  }
+
+  // Minimum final notunu göster
+  if (yearlyAchievementScore >= MIN_YEARLY_FOR_FINAL) {
+    const neededNoteElement = document.createElement("p");
+    neededNoteElement.id = "finalNeededText";
+    neededNoteElement.style.fontWeight = "bold";
+
+    let minFinalForOverallPass = (MIN_OVERALL_PASS_SCORE - (yearlyAchievementScore * 0.60)) / 0.40;
+    let actualMinFinalNeeded = Math.max(MIN_FINAL_SCORE, minFinalForOverallPass);
+
+    if (actualMinFinalNeeded > 100) {
+      neededNoteElement.innerText = "Yıl içi puanınızla, finalden 100 alsanız bile geçmeniz mümkün değil.";
+      neededNoteElement.style.color = "red";
+    } else {
+      neededNoteElement.innerText = `Dersi geçmek için finalden en az ${actualMinFinalNeeded.toFixed(2)} almanız gerekmektedir.`;
+      neededNoteElement.style.color = finalExamScore >= actualMinFinalNeeded ? "green" : (finalExamScore < MIN_FINAL_SCORE ? "red" : "orange");
+    }
+    finalNote.parentNode.insertBefore(neededNoteElement, finalNote.nextSibling);
+  }
+
+  resultContainer.style.display = "block";
+};
     
-      if (yearlyAchievementScore < MIN_YEARLY_FOR_FINAL) {
-        statusDiv.innerText = "Yıl İçi Başarı Puanınız düşük olduğu için Finale Giremezsiniz!";
-        statusDiv.className = "status-box warning";
-        termNote.style.color = "red";
-        termNote.style.fontWeight = "bold";
-        // Finale giremiyorsa, finalden kaç alması gerektiği bilgisini gösterme
-        const oldWarning = document.getElementById("finalNeededText");
-        if (oldWarning) oldWarning.remove();
-      } else if (finalExamScore < MIN_FINAL_SCORE) {
-        statusDiv.innerText = "Final Sınavı Puanınız 50'nin altında olduğu için KALDINIZ!";
-        statusDiv.className = "status-box fail";
-        finalNote.style.color = "red";
-        finalNote.style.fontWeight = "bold";
-      } else if (endOfYearSuccessScore >= MIN_OVERALL_PASS_SCORE) {
-        statusDiv.innerText = "GEÇTİNİZ!";
-        statusDiv.className = "status-box success";
-      } else {
-        statusDiv.innerText = "KALDINIZ! (Genel Ortalama Düşük)";
-        statusDiv.className = "status-box fail";
-      }
-    
-      // Finalden kaç alması gerektiği hesaplaması (sadece finale girebiliyorsa göster)
-      const oldWarning = document.getElementById("finalNeededText");
-      if (oldWarning) oldWarning.remove();
-    
-      if (yearlyAchievementScore >= MIN_YEARLY_FOR_FINAL) {
-        const neededNoteElement = document.createElement("p");
-        neededNoteElement.id = "finalNeededText";
-        neededNoteElement.style.fontWeight = "bold"; // Rengi duruma göre ayarla
-    
-        // Geçmek için gereken minimum final notu:
-        // endOfYearSuccessScore >= MIN_OVERALL_PASS_SCORE  ve finalExamScore >= MIN_FINAL_SCORE olmalı
-        // (yearlyAchievementScore * 0.60) + (minFinalForOverallPass * 0.40) = MIN_OVERALL_PASS_SCORE
-        let minFinalForOverallPass = (MIN_OVERALL_PASS_SCORE - (yearlyAchievementScore * 0.60)) / 0.40;
-    
-        // Gerçekte alması gereken minimum final notu, hem 50'den hem de genel ortalamayı sağlayacak değerden büyük olanıdır.
-        let actualMinFinalNeeded = Math.max(MIN_FINAL_SCORE, minFinalForOverallPass);
-    
-        if (actualMinFinalNeeded > 100) {
-          neededNoteElement.innerText = "Yıl içi puanınızla, finalden 100 alsanız bile geçmeniz mümkün değil.";
-          neededNoteElement.style.color = "red";
-        } else {
-          neededNoteElement.innerText = `Dersi geçmek için finalden en az ${actualMinFinalNeeded.toFixed(2)} almanız gerekmektedir.`;
-          if (finalExamScore < actualMinFinalNeeded && finalExamScore >= MIN_FINAL_SCORE) { // Finalden 50 almış ama ortalamayı tutturamamışsa
-              neededNoteElement.style.color = "orange";
-          } else if (finalExamScore < MIN_FINAL_SCORE) {
-               neededNoteElement.style.color = "red"; // Zaten finalden kalmışsa
-          }
-          else {
-              neededNoteElement.style.color = "green"; // Gerekli notu almış veya üstündeyse
-          }
-        }
-        // Final notu bilgisinin altına ekle
-        finalNote.parentNode.insertBefore(neededNoteElement, finalNote.nextSibling);
-      }
-      resultContainer.style.display = "block";
-  
-      if (alltermnote < 60) {
-        statusDiv.innerText = "Finale Giremez!";
-        statusDiv.className = "status-box warning";
-        termNote.style.color = "red";
-        termNote.style.fontWeight = "bold";
-      } else if (finalexam < 50) {
-        statusDiv.innerText = "Finali geçemez!";
-        statusDiv.className = "status-box warning";
-        finalNote.style.color = "red";
-        finalNote.style.fontWeight = "bold";
-      } else if (formatlisayi >= 60) {
-        statusDiv.innerText = "GEÇER!";
-        statusDiv.className = "status-box success";
-      } else {
-        statusDiv.innerText = "GEÇEMEZ!";
-        statusDiv.className = "status-box fail";
-      }
-  
-      resultContainer.style.display = "block";
-    };
+
   </script>
   
 </body>
