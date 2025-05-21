@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -17,7 +18,6 @@
   <form id="gradeForm">
     <h2>Fall Term</h2>
     <div class="form-container">
-      <!-- Quiz Inputs -->
       <div class="form-row"><label for="quiz1">Quiz 1</label><input type="number" id="quiz1" placeholder="0-40" step="0.1" min="0" max="40" required /></div>
       <div class="form-row"><label for="quiz2">Quiz 2</label><input type="number" id="quiz2" placeholder="0-40" step="0.1" min="0" max="40" required /></div>
       <div class="form-row"><label for="quiz3">Quiz 3</label><input type="number" id="quiz3" placeholder="0-40" step="0.1" min="0" max="40" required /></div>
@@ -26,7 +26,6 @@
 
     <h4>Term Exam 1</h4>
     <div class="form-container">
-      <!-- Term Exam 1 Inputs -->
       <div class="form-row"><label for="writing1">Writing</label><input type="number" id="writing1" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
       <div class="form-row"><label for="language1">Language</label><input type="number" id="language1" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
       <div class="form-row"><label for="listening1">Listening</label><input type="number" id="listening1" placeholder="0-10" step="0.1" min="0" max="10" required /></div>
@@ -37,7 +36,6 @@
 
     <h6>Spring Term</h6>
     <div class="form-container">
-      <!-- Spring Term Inputs -->
       <div class="form-row"><label for="quiz4">Quiz 4</label><input type="number" id="quiz4" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
       <div class="form-row"><label for="quiz5">Quiz 5</label><input type="number" id="quiz5" placeholder="0-40" step="0.1" min="0" max="40" required /></div>
       <div class="form-row"><label for="quiz6">Quiz 6</label><input type="number" id="quiz6" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
@@ -46,7 +44,6 @@
 
     <h5>Term Exam 2</h5>
     <div class="form-container">
-      <!-- Term Exam 2 Inputs -->
       <div class="form-row"><label for="writing2">Writing</label><input type="number" id="writing2" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
       <div class="form-row"><label for="language2">Language</label><input type="number" id="language2" placeholder="0-25" step="0.1" min="0" max="25" required /></div>
       <div class="form-row"><label for="listening2">Listening</label><input type="number" id="listening2" placeholder="0-20" step="0.1" min="0" max="20" required /></div>
@@ -77,119 +74,110 @@
   </form>
 
   <script>
-    document.getElementById("calculateBtn").onclick = function () {
-  let hesap = true;
-  let ids = [
-    "quiz1", "quiz2", "quiz3", "quiz4", "quiz5", "quiz6",
-    "cpg1", "cpg2", "writing1", "language1", "listening1", "reading1",
-    "speaking1", "vocabulary1", "writing2", "language2", "listening2",
-    "reading2", "vocabulary2", "FINAL"
-  ];
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("calculateBtn").onclick = function () {
+        let hesap = true;
+        let ids = [
+          "quiz1", "quiz2", "quiz3", "quiz4", "quiz5", "quiz6",
+          "cpg1", "cpg2", "writing1", "language1", "listening1", "reading1",
+          "speaking1", "vocabulary1", "writing2", "language2", "listening2",
+          "reading2", "vocabulary2", "FINAL"
+        ];
+        ids.forEach(id => {
+          const input = document.getElementById(id);
+          const value = parseFloat(input.value);
+          if (isNaN(value) || value < 0 || value > parseFloat(input.max)) {
+            input.style.border = "2px solid red";
+            hesap = false;
+          } else {
+            input.style.border = "";
+          }
+        });
+        if (!hesap) return;
 
-  ids.forEach(id => {
-    const input = document.getElementById(id);
-    const value = parseFloat(input.value);
-    if (isNaN(value) || value < 0 || value > parseFloat(input.max)) {
-      input.style.border = "2px solid red";
-      hesap = false;
-    } else {
-      input.style.border = "";
-    }
-  });
+        const getVal = id => parseFloat(document.getElementById(id).value);
 
-  if (!hesap) return;
+        let q1 = getVal("quiz1"), q2 = getVal("quiz2"), q3 = getVal("quiz3");
+        let q4 = getVal("quiz4"), q5 = getVal("quiz5"), q6 = getVal("quiz6");
+        let cpg1 = getVal("cpg1"), cpg2 = getVal("cpg2");
+        let writing1 = getVal("writing1"), language1 = getVal("language1");
+        let listening1 = getVal("listening1"), reading1 = getVal("reading1");
+        let speaking1 = getVal("speaking1"), vocabulary1 = getVal("vocabulary1");
+        let writing2 = getVal("writing2"), language2 = getVal("language2");
+        let listening2 = getVal("listening2"), reading2 = getVal("reading2");
+        let vocabulary2 = getVal("vocabulary2");
+        let finalexam = getVal("FINAL");
 
-  const getVal = id => parseFloat(document.getElementById(id).value);
+        let quizes = (q1 + q2 + q3 + q4 + q5 + q6) * 0.1;
+        let termexam1 = writing1 + language1 + listening1 + reading1 + speaking1 + vocabulary1;
+        let termexam2 = writing2 + language2 + listening2 + reading2 + vocabulary2;
+        let termexams = (termexam1 + termexam2) * 0.3;
+        let cpgs = (cpg1 + cpg2) / 2;
+        let alltermnote = quizes + termexams + cpgs;
+        let formatlisayi = alltermnote * 0.6 + finalexam * 0.4;
 
-  let q1 = getVal("quiz1"), q2 = getVal("quiz2"), q3 = getVal("quiz3");
-  let q4 = getVal("quiz4"), q5 = getVal("quiz5"), q6 = getVal("quiz6");
-  let cpg1 = getVal("cpg1"), cpg2 = getVal("cpg2");
-  let writing1 = getVal("writing1"), language1 = getVal("language1");
-  let listening1 = getVal("listening1"), reading1 = getVal("reading1");
-  let speaking1 = getVal("speaking1"), vocabulary1 = getVal("vocabulary1");
-  let writing2 = getVal("writing2"), language2 = getVal("language2");
-  let listening2 = getVal("listening2"), reading2 = getVal("reading2");
-  let vocabulary2 = getVal("vocabulary2");
-  let finalexam = getVal("FINAL");
+        let yearlyAchievementScore = alltermnote;
+        let finalExamScore = finalexam;
+        let endOfYearSuccessScore = formatlisayi;
 
-  let quizes = (q1 + q2 + q3 + q4 + q5 + q6) * 0.1;
-  let termexam1 = writing1 + language1 + listening1 + reading1 + speaking1 + vocabulary1;
-  let termexam2 = writing2 + language2 + listening2 + reading2 + vocabulary2;
-  let termexams = (termexam1 + termexam2) * 0.3;
-  let cpgs = (cpg1 + cpg2) / 2;
+        const MIN_YEARLY_FOR_FINAL = 60;
+        const MIN_FINAL_SCORE = 50;
+        const MIN_OVERALL_PASS_SCORE = 60;
 
-  let alltermnote = quizes + termexams + cpgs;
-  let formatlisayi = alltermnote * 0.6 + finalexam * 0.4;
+        const resultContainer = document.getElementById("resultContainer");
+        const resultValue = document.getElementById("resultValue");
+        const termNote = document.getElementById("termNote");
+        const finalNote = document.getElementById("finalNote");
+        const statusDiv = document.getElementById("finalStatus");
 
-  // Tanımlar eklendi
-  let yearlyAchievementScore = alltermnote;
-  let finalExamScore = finalexam;
-  let endOfYearSuccessScore = formatlisayi;
+        resultValue.innerText = formatlisayi.toFixed(2) + "/100";
+        termNote.innerText = `Yıl içi notu: ${alltermnote.toFixed(2)} / 100`;
+        finalNote.innerText = `Final notu: ${finalexam.toFixed(2)} / 100`;
 
-  const MIN_YEARLY_FOR_FINAL = 60;
-  const MIN_FINAL_SCORE = 50;
-  const MIN_OVERALL_PASS_SCORE = 60;
+        termNote.style = "";
+        finalNote.style = "";
 
-  const resultContainer = document.getElementById("resultContainer");
-  const resultValue = document.getElementById("resultValue");
-  const termNote = document.getElementById("termNote");
-  const finalNote = document.getElementById("finalNote");
-  const statusDiv = document.getElementById("finalStatus");
+        const oldWarning = document.getElementById("finalNeededText");
+        if (oldWarning) oldWarning.remove();
 
-  resultValue.innerText = formatlisayi.toFixed(2) + "/100";
-  termNote.innerText = `Yıl içi notu: ${alltermnote.toFixed(2)} / 100`;
-  finalNote.innerText = `Final notu: ${finalexam.toFixed(2)} / 100`;
+        if (yearlyAchievementScore < MIN_YEARLY_FOR_FINAL) {
+          statusDiv.innerText = "Yıl İçi Başarı Puanınız düşük olduğu için Finale Giremezsiniz!";
+          statusDiv.className = "status-box warning";
+          termNote.style.color = "red";
+          termNote.style.fontWeight = "bold";
+        } else if (finalExamScore < MIN_FINAL_SCORE) {
+          statusDiv.innerText = "Final Sınavı Puanınız 50'nin altında olduğu için KALDINIZ!";
+          statusDiv.className = "status-box fail";
+          finalNote.style.color = "red";
+          finalNote.style.fontWeight = "bold";
+        } else if (endOfYearSuccessScore >= MIN_OVERALL_PASS_SCORE) {
+          statusDiv.innerText = "GEÇTİNİZ!";
+          statusDiv.className = "status-box success";
+        } else {
+          statusDiv.innerText = "KALDINIZ! (Genel Ortalama Düşük)";
+          statusDiv.className = "status-box fail";
+        }
 
-  termNote.style = "";
-  finalNote.style = "";
+        if (yearlyAchievementScore >= MIN_YEARLY_FOR_FINAL) {
+          const neededNoteElement = document.createElement("p");
+          neededNoteElement.id = "finalNeededText";
+          neededNoteElement.style.fontWeight = "bold";
 
-  // Eski uyarıyı temizle
-  const oldWarning = document.getElementById("finalNeededText");
-  if (oldWarning) oldWarning.remove();
+          let minFinalForOverallPass = (MIN_OVERALL_PASS_SCORE - (yearlyAchievementScore * 0.60)) / 0.40;
+          let actualMinFinalNeeded = Math.max(MIN_FINAL_SCORE, minFinalForOverallPass);
 
-  // GEÇME/KALMA
-  if (yearlyAchievementScore < MIN_YEARLY_FOR_FINAL) {
-    statusDiv.innerText = "Yıl İçi Başarı Puanınız düşük olduğu için Finale Giremezsiniz!";
-    statusDiv.className = "status-box warning";
-    termNote.style.color = "red";
-    termNote.style.fontWeight = "bold";
-  } else if (finalExamScore < MIN_FINAL_SCORE) {
-    statusDiv.innerText = "Final Sınavı Puanınız 50'nin altında olduğu için KALDINIZ!";
-    statusDiv.className = "status-box fail";
-    finalNote.style.color = "red";
-    finalNote.style.fontWeight = "bold";
-  } else if (endOfYearSuccessScore >= MIN_OVERALL_PASS_SCORE) {
-    statusDiv.innerText = "GEÇTİNİZ!";
-    statusDiv.className = "status-box success";
-  } else {
-    statusDiv.innerText = "KALDINIZ! (Genel Ortalama Düşük)";
-    statusDiv.className = "status-box fail";
-  }
-
-  // Minimum final notunu göster
-  if (yearlyAchievementScore >= MIN_YEARLY_FOR_FINAL) {
-    const neededNoteElement = document.createElement("p");
-    neededNoteElement.id = "finalNeededText";
-    neededNoteElement.style.fontWeight = "bold";
-
-    let minFinalForOverallPass = (MIN_OVERALL_PASS_SCORE - (yearlyAchievementScore * 0.60)) / 0.40;
-    let actualMinFinalNeeded = Math.max(MIN_FINAL_SCORE, minFinalForOverallPass);
-
-    if (actualMinFinalNeeded > 100) {
-      neededNoteElement.innerText = "Yıl içi puanınızla, finalden 100 alsanız bile geçmeniz mümkün değil.";
-      neededNoteElement.style.color = "red";
-    } else {
-      neededNoteElement.innerText = `Dersi geçmek için finalden en az ${actualMinFinalNeeded.toFixed(2)} almanız gerekmektedir.`;
-      neededNoteElement.style.color = finalExamScore >= actualMinFinalNeeded ? "green" : (finalExamScore < MIN_FINAL_SCORE ? "red" : "orange");
-    }
-    finalNote.parentNode.insertBefore(neededNoteElement, finalNote.nextSibling);
-  }
-
-  resultContainer.style.display = "block";
-};
-    
-
+          if (actualMinFinalNeeded > 100) {
+            neededNoteElement.innerText = "Yıl içi puanınızla, finalden 100 alsanız bile geçmeniz mümkün değil.";
+            neededNoteElement.style.color = "red";
+          } else {
+            neededNoteElement.innerText = `Dersi geçmek için finalden en az ${actualMinFinalNeeded.toFixed(2)} almanız gerekmektedir.`;
+            neededNoteElement.style.color = finalExamScore >= actualMinFinalNeeded ? "green" : (finalExamScore < MIN_FINAL_SCORE ? "red" : "orange");
+          }
+          finalNote.parentNode.insertBefore(neededNoteElement, finalNote.nextSibling);
+        }
+        resultContainer.style.display = "block";
+      };
+    });
   </script>
-  
 </body>
 </html>
